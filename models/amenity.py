@@ -1,11 +1,5 @@
 #!/usr/bin/python3
-""" This module defines Amenity class to store an amenity informations
-
-Classes :
-    Amenity : inherits from BaseModel
-    to store amenity informations
-"""
-
+"""This is the amenity class"""
 from models.base_model import BaseModel, Base
 from sqlalchemy.orm import relationship
 from sqlalchemy import Column, String
@@ -13,14 +7,10 @@ from models.place import place_amenity
 
 
 class Amenity(BaseModel, Base):
+    """This is the class for Amenity
+    Attributes:
+        name: input name
     """
-    a class to store amenity informations
-
-    Args:
-        name (string): the name of the amenity
-    """
-
-     __tablename__ = "amenities"
+    __tablename__ = "amenities"
     name = Column(String(128), nullable=False)
-    place_amenities = relationship("Place", secondary=place_amenity,
-                                   viewonly=False)
+    place_amenities = relationship("Place", secondary=place_amenity)
