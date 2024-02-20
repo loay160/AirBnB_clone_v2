@@ -1,13 +1,5 @@
 #!/usr/bin/python3
-"""
-This module defines Place class to store the informations
-related to a place
-
-Classes :
-    Place : inherits from BaseModel
-    to store the information related to a palce
-"""
-
+"""This is the place class"""
 from sqlalchemy.ext.declarative import declarative_base
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, Table, String, Integer, Float, ForeignKey
@@ -27,25 +19,21 @@ place_amenity = Table("place_amenity", Base.metadata,
                              nullable=False))
 
 
-
 class Place(BaseModel, Base):
+    """This is the class for Place
+    Attributes:
+        city_id: city id
+        user_id: user id
+        name: name input
+        description: string of description
+        number_rooms: number of room in int
+        number_bathrooms: number of bathrooms in int
+        max_guest: maximum guest in int
+        price_by_night:: pice for a staying in int
+        latitude: latitude in flaot
+        longitude: longitude in float
+        amenity_ids: list of Amenity ids
     """
-    a class to store a place informations
-
-    Args:
-        city_id (string): stores City.id
-        user_id (string): stores User.id
-        name (string): stores the name of the place
-        description (string): a description of the place
-        number_rooms (integer): the number of the rooms
-        number_bathrooms (integer): the number of the bathrooms
-        max_guest (integer): the capacity of the place
-        price_by_night (integer): price per night
-        latitude (float): latitude (location)
-        longitude (float): longitude (location)
-        amenity_ids (list of string): a list to store Amenity.id's
-    """
-
     __tablename__ = "places"
     city_id = Column(String(60), ForeignKey("cities.id"), nullable=False)
     user_id = Column(String(60), ForeignKey("users.id"), nullable=False)
